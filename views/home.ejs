@@ -1,0 +1,43 @@
+
+
+<div>
+    <!-- heading  -->
+    <h1>TODO List</h1>
+
+    <!-- form  -->
+    <div>
+        <form action="/create-todo" method="POST">
+            <div>
+                Description
+                <input type="text" name="description" placeholder="What do you need to do?" required>
+            </div>
+            <span>
+                Category
+                <select name="category" id="category" placeholder="Choose a category" required>
+                    <option value="Personal">Personal</option>
+                    <option value="Work">Work</option>
+                    <option value="School">School</option>
+                    <option value="Cleaning">Cleaning</option>
+                    <option value="Other">Other</option>
+                </select>
+            </span>
+            <span>
+                Due Date
+                <input type="date" name="date" placeholder="dd/mm/yyyy" required>
+            </span>
+        </form> 
+    </div>
+
+    <!-- database  -->
+    <div>
+        <ul type="none">
+            <% for(let i of todo_list){ %>
+                <li>
+                    <p> <%= i.description %> </p>
+                    <p> <%= i.category %> </p>
+                    <p> <%= i.date %> </p>
+                </li>
+            <% } %>
+        </ul>
+    </div>
+</div>
