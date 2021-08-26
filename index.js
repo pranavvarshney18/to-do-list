@@ -4,6 +4,8 @@ const express = require("express");
 const app = express();
 //defining port
 const port = 8000;
+//getting mongoose/db module
+const db = require("./config/mongoose");
 
 //use express router
 app.use("/", require("./routes/index"));
