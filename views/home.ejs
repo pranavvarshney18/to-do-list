@@ -13,7 +13,7 @@
             </div>
             <span>
                 Category
-                <select name="category" id="category" placeholder="Choose a category" required>
+                <select name="category" id="category" placeholder="Choose a category">
                     <option value="Personal">Personal</option>
                     <option value="Work">Work</option>
                     <option value="School">School</option>
@@ -23,7 +23,7 @@
             </span>
             <span>
                 Due Date
-                <input type="date" name="date" placeholder="dd/mm/yyyy" required>
+                <input type="date" name="date" placeholder="yyyy/mm/dd" value="NO DEADLINE">
             </span>
 
             <div>
@@ -33,16 +33,28 @@
         </form> 
     </div>
 
+    <span>
+        <a href="/delete-todo/">
+            <button type="submit">- DELETE</button>
+        </a>
+    </span>
+
     <!-- database  -->
     <div>
-        <ul type="none">
-            <% for(let i of todo_list){ %>
-                <li>
-                    <p> <%= i.description %> </p>
-                    <p> <%= i.date %> </p>
-                    <p> <%= i.category %> </p>
-                </li>
-            <% } %>
-        </ul>
+        
+            <ul type="none">
+                <% for(let i of todo_list){ %>
+                    <li>
+                        <p> <%= i.description %> </p>
+                        <p> <%= i.date %> </p>
+                        <p> <%= i.category %> </p>
+                        <p>
+                            <a href="/mark-for-delete/?id=<%= i._id %>">
+                                <button type="submit" style="height:15px; width:10px;"></button>
+                            </a>
+                        </p>
+                    </li>
+                <% } %>
+            </ul>
     </div>
 </div>
