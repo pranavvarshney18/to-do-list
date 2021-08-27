@@ -25,19 +25,14 @@
                 Due Date
                 <input type="date" name="date" placeholder="dd/mm/yyyy" required>
             </span>
+
+            <div>
+                <button type="submit">+ ADD</button>
+            </div>
+
         </form> 
     </div>
 
     <!-- database  -->
-    <div>
-        <ul type="none">
-            <% for(let i of todo_list){ %>
-                <li>
-                    <p> <%= i.description %> </p>
-                    <p> <%= i.category %> </p>
-                    <p> <%= i.date %> </p>
-                </li>
-            <% } %>
-        </ul>
-    </div>
+    
 </div>
