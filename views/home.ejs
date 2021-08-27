@@ -34,5 +34,15 @@
     </div>
 
     <!-- database  -->
-    
+    <div>
+        <ul type="none">
+            <% for(let i of todo_list){ %>
+                <li>
+                    <p> <%= i.description %> </p>
+                    <p> <%= i.date %> </p>
+                    <p> <%= i.category %> </p>
+                </li>
+            <% } %>
+        </ul>
+    </div>
 </div>

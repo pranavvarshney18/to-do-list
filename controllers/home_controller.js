@@ -7,7 +7,16 @@ const db = require("../config/mongoose");
 
 //controller for home page
 module.exports.home = function(req, res){
-    res.render("home");
+    Todo.find({}, function(err, todos){
+        if(err){
+            console.log("Error in fetching contacts from DB: ", err);
+            return;
+        }
+
+        return res.render("home", {
+            todo_list: todos,
+        });
+    });
 };
 
 
