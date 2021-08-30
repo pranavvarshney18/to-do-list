@@ -33,25 +33,6 @@ app.set("views", "./views");
 
 
 
-// app.post("/create-todo", function(req,res){
-//     Todo.create({
-//         description: req.body.description,
-//         category: req.body.category,
-//         date: req.body.date
-//     }, function(err, newTodo){
-//         if(err){
-//             console.log("Error in creating a Todo: ", err);
-//             return;
-//         }
-
-//         //newTodo is an object of the new todo created
-//         console.log("************", newTodo);
-//         return res.redirect("back");
-//     });
-// });
-
-
-
 
 //checking if express server is running or not
 app.listen(port, function(err){

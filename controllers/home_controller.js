@@ -18,6 +18,7 @@ module.exports.home = function(req, res){
 
         return res.render("home", {
             todo_list: todos,
+            title: "TODO List"
         });
     });
 };
