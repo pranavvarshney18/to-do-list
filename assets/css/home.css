@@ -98,8 +98,7 @@ button{
     width: 50%;
     margin:0px;
     margin-left:-5px;
-    border-top:0px;
-    
+    border-top:0px; 
 }
 
 
@@ -220,4 +219,60 @@ button{
     /* max-height: 380px;
     min-height: auto; */
     height: 380px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* media queries  */
+@media screen and (max-width: 1304px){
+    #container{
+        width: 100%;
+    }
+}
+
+
+@media screen and (max-width: 980px){
+    #form-description, #form-category, #form-date{
+        width: 100%;
+        text-align: center;
+    }
+    #form input, #form select{
+        text-align: center;
+    }
+    #submit-button, #delete-button{
+        transform: translate(150%, 15%);
+        width: 130%;
+    }
+    #single-data > span{
+        display: block;
+    }
+    #container{
+        height: auto;
+    }
+    #data-markdelete-description-date{
+        width: 60%;
+    }
+    #data-category{
+        width: 30%;
+        font-size: 10px;
+    }
+    #submit-button i, #delete-button i{
+        left: -10px;
+    }
 }
