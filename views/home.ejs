@@ -1,3 +1,4 @@
+<!-- link for css file  -->
 <link rel="stylesheet" href="/css/home.css">
 
 <div id="container">
@@ -7,10 +8,12 @@
     <!-- form  -->
     <div>
         <form action="/create-todo" id="form" method="POST">
+            <!-- description -->
             <div id="form-description" class="border-and-dimension">
                 <div class="bold-text margin-left margin-top uppercase">Description</div>
-                <input type="text" name="description" placeholder="What do you need to do?" required>
+                <input type="text" id="input-description" name="description" placeholder="What do you need to do?" required>
             </div>
+            <!-- category  -->
             <span id="form-category" class="border-and-dimension">
                 <div class="bold-text margin-left margin-top uppercase">category</div>
                 <select name="category" id="category" placeholder="Choose a category">
@@ -24,11 +27,12 @@
                     <option value="Other">Other</option>
                 </select>
             </span>
+            <!-- due date  -->
             <span id="form-date" class="border-and-dimension">
                 <div class="bold-text margin-left margin-top uppercase">due date</div>
-                <input type="date" name="date" placeholder="yyyy/mm/dd" value="NO DEADLINE">
+                <input type="date" name="date" id="input-date" placeholder="yyyy/mm/dd" value="NO DEADLINE">
             </span>
-
+            <!-- submit button  -->
             <div id="submit-button-container" class="button">
                 <button type="submit" id="submit-button">
                     <i class="fas fa-plus" style="color:white; position:relative; right: 30px;"></i> 
@@ -39,64 +43,69 @@
         </form> 
     </div>
 
-    <span class="button">
-        <a href="/delete-todo/" >
-            <button type="submit" id="delete-button">
-                <i class="fas fa-trash-alt" style="color:white; position:relative; right: 30px;"></i>
-                DELETE</button>
-        </a>
-    </span>
+
+
+
+
 
     <!-- database  -->
-    <div id="database-container">
+    <div>
+            <form action="/delete" method="POST" id="data-form">
+
+                <!-- button to delete selected elements  -->
+                <span class="button">
+                    <button type="submit" id="delete-button">
+                        <i class="fas fa-trash-alt" style="color:white; position:relative; right: 30px;"></i>
+                        DELETE</button>
+                </span>
+
+
+
+                <ul type="none" id="database-container">
+                    <% for(let i of todo_list){ %>
+                        <li class="border-top" id="single-data" >
+                            <!-- using checkbox here to mark multiple elements for deletion  -->
+                            <input type="checkbox" name="mark-for-delete"  value="<%= i._id %>" class="enlarge-checkbox">
+                                <span id="data-markdelete-description-date">
+                                    
         
-            <ul type="none" >
-                <% for(let i of todo_list){ %>
-                    <li class="border-top" id="single-data">
-                        
-                        <span id="data-markdelete-description-date">
-                            <!-- mark for delete button  -->
-                            <!-- <span id="mark-button-container"> -->
-                                <a href="/mark-for-delete/?id=<%= i._id %>">
-                                    <!-- <button type="submit" style="height:15px; width:10px;"></button> -->
-                                    <span id="mark-button" ></span>
-                                </a>
-                            <!-- </span> -->
-
-                            <!-- description and date  -->
-                            <span id="data-description-time">
-                                <p class ="bold-text" id="data-description"> <%= i.description %> </p>
-                                <p id="data-date"> <% if(i.date == ""){ %>
-                                        <i class="far fa-calendar-alt" style="color:grey"></i>
-                                        NO DEADLINE
-                                    <% }else{ %>
-                                        <i class="far fa-calendar-alt" style="color:grey"></i>
-                                        <%= i.date %>    
+                                    <!-- description and date  -->
+                                    <span id="data-description-time" class="<%= i._id %>">
+                                        <p class ="bold-text" id="data-description"> <%= i.description %> </p>
+                                        <p id="data-date"> <% if(i.date == ""){ %>
+                                                <i class="far fa-calendar-alt" style="color:grey"></i>
+                                                NO DEADLINE
+                                            <% }else{ %>
+                                                <i class="far fa-calendar-alt" style="color:grey"></i>
+                                                <%= i.date %>    
+                                            <% } %>
+                                        </p>
+                                    </span>
+        
+                                </span>
+                                <!-- category  -->
+                                <span id="data-category" class="<%= i._id %>">
+                                    <% if(i.category == ""){ %>
+                                        <% continue; %>
+                                    <% }else if(i.category == "Personal"){ %>
+                                        <span style="background-color: lightseagreen;"><%= i.category %></span>
+                                    <% }else if(i.category == "Work"){ %>
+                                        <span style="background-color: purple;"> <%= i.category %> </span>
+                                    <% }else if(i.category == "School"){ %>
+                                        <span style="background-color: orange;"> <%= i.category %> </span>
+                                    <% }else if(i.category == "Cleaning"){ %>
+                                        <span style="background-color: brown;"><%= i.category %> </span>
+                                    <% }else if(i.category == "Other"){ %>
+                                        <span style="background-color: darkblue;"> <%= i.category %> </span>
                                     <% } %>
-                                </p>
-                            </span>
-
-                        </span>
-                        <!-- category  -->
-                        <span id="data-category">
-                            <% if(i.category == ""){ %>
-                                <% continue; %>
-                            <% }else if(i.category == "Personal"){ %>
-                                <span style="background-color: lightseagreen;"><%= i.category %></span>
-                            <% }else if(i.category == "Work"){ %>
-                                <span style="background-color: purple;"> <%= i.category %> </span>
-                            <% }else if(i.category == "School"){ %>
-                                <span style="background-color: orange;"> <%= i.category %> </span>
-                            <% }else if(i.category == "Cleaning"){ %>
-                                <span style="background-color: brown;"><%= i.category %> </span>
-                            <% }else if(i.category == "Other"){ %>
-                                <span style="background-color: darkblue;"> <%= i.category %> </span>
-                            <% } %>
-                        </span>
-                        
-                    </li>
-                <% } %>
-            </ul>
+                                </span>
+                            
+                            <br>        
+                            
+                        </li>
+                    <% } %>
+                </ul>
+            </form>
     </div>
 </div>
 
@@ -104,3 +113,7 @@
 
 <!-- font awesome  -->
 <script src="https://kit.fontawesome.com/f2b6f6518a.js" crossorigin="anonymous"></script>
+<!-- js file  -->
+<script type="text/javascript" src="/js/home.js"></script>
+<!-- jQuery file  -->
+<!-- <script src="jquery-3.6.0.js"></script> -->

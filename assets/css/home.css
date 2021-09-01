@@ -51,6 +51,10 @@ button{
     border-top: 1px lightgrey solid;
     border-bottom: 1px lightgrey solid;
 }
+.enlarge-checkbox{
+    transform: scale(1.7);
+    cursor: pointer;
+}
 
 
 /* id  */
@@ -68,6 +72,12 @@ button{
     margin-left: 10px;
     margin-top: 5px;
     font-size: 15px;
+    border-color: white;
+    padding: 5px;
+}
+#form input:hover{
+    border: none;
+    border-color: white;
 }
 #form-description input, #form-category select{
     width: 95%;
@@ -120,7 +130,7 @@ button{
 
 
 
-#mark-button{
+.mark-button{
     border: 2px solid black;
     height: 15px;
     width: 15px;
@@ -129,9 +139,14 @@ button{
     border-radius: 3px;
     position: relative;
     bottom: 25px;
+    color: white;
 }
-#mark-button:hover{
-    background-color: lightgreen;
+.mark-button i{
+    transform: translate(0px, 1.5px) ;
+    border:none;
+}
+.mark-button:hover{
+    background-color: green;
 }
 
 #single-data{
@@ -141,6 +156,7 @@ button{
     width: 90%;
     padding-left: 10px;
     padding-right: 10px;
+    transition: 0.2s all;
 }
 #data-markdelete-description-date{
     /* border: 1px yellow solid; */
@@ -188,6 +204,7 @@ button{
     font-size: 20px;
     font-weight: 700;
     line-height: 50px;
+    border-radius: 3px;
 }
 
 #single-data:hover{
