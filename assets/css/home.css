@@ -81,6 +81,10 @@ button{
 }
 #form-description input, #form-category select{
     width: 95%;
+    outline: none;
+}
+#form-date input{
+    outline: none;
 }
 #form-category{
     width: 50%;
